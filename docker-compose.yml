@@ -1,0 +1,16 @@
+version: '3'
+services:
+  house-cmu: 
+    build: HouseSimulator/
+  house-mse:
+    build: HouseSimulator/
+  platform:
+    build: Platform/
+    depends_on:
+     - "mysql-container"
+     - "house-cmu"
+     - "house-mse"
+    ports:
+     - "8080:8080"
+  mysql-container:
+    build: Database/
